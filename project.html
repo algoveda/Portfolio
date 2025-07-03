@@ -1,0 +1,1547 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/gif" href="/favicon.gif" />
+    <title>Raghuvir Anturkar | Projects</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      .blinking-cursor {
+        animation: blink 1s infinite;
+        opacity: 1;
+      }
+
+      @keyframes blink {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0; }
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      :root {
+        --midnight-navy: #0a0e27;
+        --muted-indigo: #1a1f3a;
+        --cyber-red: #e35252;
+        --cyber-red-light: #f09292;
+        --pixel-yellow: #f2bd4b;
+        --pixel-yellow-light: #edc877;
+        --neon-cyan: #00ffff;
+        --cyber-purple: #9d00ff;
+        --cyber-pink: #ff2a6d;
+        --neon-blue: #00f5ff;
+      }
+
+      body {
+        font-family: "Press Start 2P", monospace;
+        background: var(--midnight-navy);
+        color: var(--pixel-yellow);
+        overflow-x: hidden;
+      }
+
+      header {
+        background: linear-gradient(
+          180deg,
+          rgba(26, 31, 58, 0.95) 0%,
+          rgba(10, 14, 39, 0.95) 100%
+        );
+        border-bottom: 2px solid var(--cyber-purple);
+        padding: 15px 0;
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 50;
+        box-shadow: 0 4px 30px rgba(157, 0, 255, 0.3);
+        animation: headerGlow 3s ease-in-out infinite alternate;
+      }
+
+      @keyframes headerGlow {
+        0% {
+          box-shadow: 0 0 15px rgba(157, 0, 255, 0.5),
+                      0 0 30px rgba(255, 42, 109, 0.3);
+        }
+        100% {
+          box-shadow: 0 0 25px rgba(157, 0, 255, 0.8),
+                      0 0 50px rgba(255, 42, 109, 0.5);
+        }
+      }
+
+      .header-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+        display: flex;
+        flex-direction: row; /* Ensure the direction is row */
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .logo {
+        font-size: 14px;
+        color: var(--cyber-red);
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        transition: all 0.3s ease;
+        padding: 5px 10px;
+        border-radius: 4px;
+        background: rgba(10, 14, 39, 0.4);
+        border: 1px solid var(--cyber-purple);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .logo:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(227, 82, 82, 0.4);
+        color: var(--cyber-pink);
+      }
+
+      .logo::before {
+        content: "";
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: linear-gradient(
+          to bottom right,
+          transparent 45%,
+          rgba(255, 42, 109, 0.1) 50%,
+          transparent 55%
+        );
+        transform: rotate(30deg);
+        animation: shine 3s infinite;
+      }
+
+      .logo span {
+        margin-left: 10px;
+        text-shadow: 0 0 10px var(--cyber-red);
+      }
+
+      nav ul {
+        display: flex;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        gap: 10px;
+      }
+
+      nav a {
+        color: var(--pixel-yellow);
+        text-decoration: none;
+        font-size: 0.7rem;
+        padding: 8px 12px;
+        border-radius: 4px;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+        background: rgba(26, 31, 58, 0.5);
+        border: 1px solid transparent;
+        text-transform: uppercase;
+      }
+
+      nav a:hover {
+        color: var(--cyber-pink);
+        border-color: var(--cyber-pink);
+        text-shadow: 0 0 8px var(--cyber-pink);
+        transform: translateY(-2px);
+      }
+
+      nav a.active {
+        background: rgba(157, 0, 255, 0.2);
+        border: 1px solid var(--cyber-purple);
+        color: var(--neon-cyan);
+        box-shadow: 0 0 10px rgba(157, 0, 255, 0.4);
+      }
+
+      nav a::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background: var(--cyber-pink);
+        transform: scaleX(0);
+        transform-origin: right;
+        transition: transform 0.3s ease;
+      }
+
+      nav a:hover::after {
+        transform: scaleX(1);
+        transform-origin: left;
+      }
+
+      .scanlines {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: repeating-linear-gradient(
+          0deg,
+          rgba(255, 0, 0, 0.1),
+          rgba(255, 0, 0, 0.2) 2px,
+          transparent 2px,
+          transparent 4px
+        );
+        z-index: 100;
+        pointer-events: none;
+      }
+
+      .container {
+        max-width: 100%;
+        z-index: 10;
+        background-color: #f7f9f90f;
+      }
+
+      .container {
+        margin: 0 auto;
+        padding: 150px 20px 10px;
+        position: relative;
+        z-index: 10;
+      }
+
+      .hero {
+        text-align: center;
+        padding: 20px 0;
+        position: relative;
+        margin-bottom: 30px;
+        border-bottom: 1px solid rgba(157, 0, 255, 0.3);
+      }
+
+      .hero h1 {
+        font-size: clamp(24px, 5vw, 48px);
+        margin-bottom: 30px;
+        text-shadow: 0 0 20px var(--cyber-pink);
+        position: relative;
+        background: linear-gradient(
+          90deg,
+          var(--pixel-yellow),
+          var(--cyber-pink)
+        );
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        padding: 10px 0;
+        letter-spacing: 2px;
+        animation: none;
+      }
+
+      .terminal-text {
+        font-size: 14px;
+        color: var(--terminal-green);
+        margin-top: 30px auto 0;
+        min-height: 20px;
+        border-top: 1px solid rgba(0, 255, 255, 0.2);
+        padding-top: 10px;
+        display: inline-block;
+        position: relative;
+        text-align: left;
+        max-width: 800px;
+        line-height: 1.6;
+      }
+
+      .terminal-text::before {
+        content: ">";
+        text-align: center;
+        left: -20px;
+        color: var(--cyber-red);
+      }
+
+      .projects-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 40px;
+        margin-top: 60px;
+      }
+
+      .project-card {
+        background: linear-gradient(
+          145deg,
+          rgba(26, 31, 58, 0.8) 0%,
+          rgba(10, 14, 39, 0.9) 100%
+        );
+        border: 3px solid var(--cyber-purple);
+        border-radius: 8px;
+        padding: 25px;
+        position: relative;
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        box-shadow: 0 5px 15px rgba(157, 0, 255, 0.2),
+          inset 0 0 20px rgba(157, 0, 255, 0.1);
+        overflow: hidden;
+        min-height: 350px;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .project-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(
+          135deg,
+          rgba(255, 42, 109, 0.1) 0%,
+          rgba(0, 245, 255, 0.1) 100%
+        );
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        z-index: -1;
+      }
+
+      .project-card:hover {
+        transform: translateY(-10px) rotate(1deg) scale(1.02);
+        box-shadow: 0 15px 30px rgba(157, 0, 255, 0.4),
+          inset 0 0 30px rgba(157, 0, 255, 0.2),
+          0 0 20px var(--cyber-pink);
+        border-color: var(--cyber-pink);
+        animation: cardPulse 2s infinite;
+      }
+
+      @keyframes cardPulse {
+        0% {
+          box-shadow: 0 15px 30px rgba(157, 0, 255, 0.4),
+                      inset 0 0 30px rgba(157, 0, 255, 0.2),
+                      0 0 20px var(--cyber-pink);
+        }
+        50% {
+          box-shadow: 0 15px 40px rgba(157, 0, 255, 0.6),
+                      inset 0 0 40px rgba(157, 0, 255, 0.3),
+                      0 0 30px var(--cyber-pink);
+        }
+        100% {
+          box-shadow: 0 15px 30px rgba(157, 0, 255, 0.4),
+                      inset 0 0 30px rgba(157, 0, 255, 0.2),
+                      0 0 20px var(--cyber-pink);
+        }
+      }
+
+      .project-card:hover::before {
+        opacity: 1;
+      }
+
+      .project-screen {
+        background: var(--midnight-navy);
+        border: 2px solid var(--cyber-purple);
+        border-radius: 6px;
+        padding: 20px;
+        margin-bottom: 20px;
+        min-height: 180px;
+        position: relative;
+        overflow: hidden;
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .project-screen::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: repeating-linear-gradient(
+          0deg,
+          rgba(0, 255, 255, 0.03) 0%,
+          rgba(0, 255, 255, 0.03) 1px,
+          transparent 1px,
+          transparent 2px
+        );
+        pointer-events: none;
+      }
+
+      .project-screen::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.7);
+        pointer-events: none;
+      }
+
+      .project-title {
+        font-size: 16px;
+        color: var(--cyber-pink);
+        margin-bottom: 15px;
+        text-shadow: 0 0 10px var(--cyber-pink);
+        position: relative;
+        display: inline-block;
+        padding-bottom: 5px;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        line-height: 19px;
+      }
+
+      .project-title::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background: linear-gradient(90deg, var(--cyber-pink), transparent);
+      }
+
+      .project-desc {
+        font-size: 11px;
+        line-height: 1.8;
+        color: var(--pixel-yellow-light);
+        margin-bottom: 15px;
+        flex-grow: 1;
+      }
+
+      .project-tech {
+        font-size: 10px;
+        color: var(--neon-blue);
+        background-color: rgba(10, 14, 39, 0.8);
+        padding: 8px 12px;
+        border-radius: 4px;
+        display: inline-block;
+        margin-top: 10px;
+        border: 1px solid var(--neon-blue);
+        box-shadow: 0 0 10px rgba(0, 245, 255, 0.3);
+        line-height: 1.5;
+      }
+
+      .project-controls {
+        display: flex;
+        justify-content: space-between;
+        gap: 15px;
+        margin-top: 20px;
+      }
+
+      .retro-btn {
+        background: var(--pixel-yellow);
+        color: var(--midnight-navy);
+        border: none;
+        padding: 12px 0;
+        font-family: inherit;
+        font-size: 10px;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        position: relative;
+        flex: 1;
+        overflow: hidden;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        box-shadow: 0 4px 6px rgba(242, 189, 75, 0.3);
+        z-index: 1;
+      }
+
+      .retro-btn::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.3),
+          transparent
+        );
+        transition: 0.5s;
+        z-index: -1;
+      }
+
+      .retro-btn:hover {
+        background: var(--cyber-pink);
+        color: white;
+        transform: translateY(-3px);
+        box-shadow: 0 6px 12px rgba(255, 42, 109, 0.4);
+      }
+
+      .retro-btn:hover::before {
+        left: 100%;
+      }
+
+      .retro-btn:active {
+        transform: translateY(0);
+        box-shadow: 0 2px 4px rgba(255, 42, 109, 0.3);
+      }
+
+      footer {
+        background: linear-gradient(0deg, #1a1f3a 0%, #0a0e27 100%);
+        border-top: 4px solid #9d00ff;
+        padding: 40px 0 30px;
+        margin-top: 80px;
+        text-align: center;
+        font-size: 10px;
+        color: #f2bd4b;
+        box-shadow: 0 -4px 30px rgba(157, 0, 255, 0.3);
+        position: relative;
+        z-index: 20;
+      }
+
+      footer::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          #ff2a6d,
+          #00ffff,
+          transparent
+        );
+        animation: rainbow 3s linear infinite;
+      }
+
+      .footer-links {
+        display: flex;
+        justify-content: center;
+        gap: 25px;
+        margin-bottom: 25px;
+        flex-wrap: wrap;
+      }
+
+      .footer-links a {
+        color: #00ffff;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        padding: 10px 20px;
+        border-radius: 4px;
+        background: rgba(10, 14, 39, 0.5);
+        border: 1px solid #9d00ff;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .footer-links a:hover {
+        color: #ff2a6d;
+        text-shadow: 0 0 10px #ff2a6d;
+        transform: translateY(-3px);
+        background: rgba(157, 0, 255, 0.2);
+        box-shadow: 0 5px 15px rgba(255, 42, 109, 0.4);
+      }
+
+      .footer-links a::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background: #ff2a6d;
+        transform: scaleX(0);
+        transform-origin: right;
+        transition: transform 0.3s ease;
+      }
+
+      .footer-links a:hover::after {
+        transform: scaleX(1);
+        transform-origin: left;
+      }
+
+      .footer-copyright {
+        margin-top: 20px;
+        opacity: 0.8;
+        font-size: 1rem;
+      }
+
+      .footer-version {
+        margin-top: 15px;
+        font-size: 0.7rem;
+        opacity: 0.7;
+        color: #00ffff;
+      } 
+      .popup {
+        position: fixed;
+        bottom: -100%;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 90%;
+        max-width: 900px;
+        max-height: 80vh;
+        background: linear-gradient(
+          145deg,
+          rgba(26, 31, 58, 0.95) 0%,
+          rgba(10, 14, 39, 0.98) 100%
+        );
+        border: 3px solid var(--cyber-red-light);
+        border-radius: 12px;
+        padding: 30px;
+        box-shadow: 0 -15px 40px rgba(0, 0, 0, 0.8);
+        z-index: 1000;
+        transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+      }
+
+      .popup.active {
+        bottom: 30px;
+      }
+
+      .popup::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: linear-gradient(
+          90deg,
+          var(--cyber-pink),
+          var(--neon-blue),
+          var(--cyber-purple)
+        );
+        animation: rainbow 3s linear infinite;
+      }
+
+      .popup::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: repeating-linear-gradient(
+          0deg,
+          rgba(0, 255, 255, 0.05) 0%,
+          rgba(0, 255, 255, 0.05) 1px,
+          transparent 1px,
+          transparent 2px
+        );
+        pointer-events: none;
+      }
+
+      .popup-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 25px;
+        padding-bottom: 15px;
+        border-bottom: 1px solid rgba(157, 0, 255, 0.4);
+      }
+
+      .popup-title {
+        font-size: 18px;
+        color: var(--cyber-pink);
+        text-shadow: 0 0 10px var(--cyber-pink);
+        letter-spacing: 1px;
+        position: relative;
+        white-space: normal;
+        overflow-wrap: break-word;
+        max-width: 80%;
+      }
+
+      .popup-title::after {
+        content: "";
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background: linear-gradient(90deg, var(--cyber-pink), transparent);
+      }
+
+      .close-popup {
+        background: none;
+        border: none;
+        color: var(--cyber-pink);
+        font-family: inherit;
+        font-size: 16px;
+        cursor: pointer;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+        z-index: 1001;
+      }
+
+      .close-popup:hover {
+        background: rgba(255, 42, 109, 0.2);
+        transform: rotate(90deg);
+        color: var(--neon-cyan);
+      }
+
+      .close-popup::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        border: 1px solid var(--cyber-pink);
+        border-radius: 50%;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+
+      .close-popup:hover::before {
+        opacity: 1;
+      }
+
+      .popup-content {
+        display: flex;
+        flex-direction: row;
+        gap: 30px;
+        height: 100%;
+        overflow: hidden;
+      }
+
+      .gif-section {
+        flex: 1;
+        min-height: 300px;
+        background: var(--midnight-navy);
+        border: 2px solid var(--cyber-purple);
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        position: relative;
+        box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.6);
+      }
+
+      .gif-section::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: repeating-linear-gradient(
+          0deg,
+          rgba(0, 255, 255, 0.05) 0%,
+          rgba(0, 255, 255, 0.05) 1px,
+          transparent 1px,
+          transparent 2px
+        );
+        pointer-events: none;
+      }
+
+      .gif-section img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+      }
+
+      .gif-section:hover img {
+        transform: scale(1.05);
+      }
+
+      .project-info {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        overflow-y: auto;
+        padding-right: 10px;
+      }
+
+      .project-info::-webkit-scrollbar {
+        width: 4px;
+      }
+
+      .project-info::-webkit-scrollbar-track {
+        background: rgba(10, 14, 39, 0.5);
+      }
+
+      .project-info::-webkit-scrollbar-thumb {
+        background: var(--cyber-purple);
+        border-radius: 2px;
+      }
+
+      .popup-tech {
+        font-size: 12px;
+        color: var(--neon-blue);
+        background-color: rgba(10, 14, 39, 0.8);
+        padding: 12px 15px;
+        border-radius: 4px;
+        display: inline-block;
+        border: 1px solid var(--neon-blue);
+        box-shadow: 0 0 15px rgba(0, 245, 255, 0.3);
+        line-height: 1.6;
+      }
+
+      .popup-desc {
+        font-size: 12px;
+        line-height: 1.8;
+        color: var(--pixel-yellow-light);
+        margin-bottom: 15px;
+      }
+
+      .popup-links {
+        display: flex;
+        gap: 15px;
+        margin-top: auto;
+      }
+
+      .popup-link {
+        flex: 1;
+        padding: 14px;
+        text-align: center;
+        background: linear-gradient(
+          145deg,
+          var(--cyber-purple),
+          var(--cyber-pink)
+        );
+        color: white;
+        text-decoration: none;
+        border-radius: 4px;
+        font-size: 11px;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      .popup-link:hover {
+        background: linear-gradient(
+          145deg,
+          var(--cyber-pink),
+          var(--cyber-purple)
+        );
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(255, 42, 109, 0.5);
+      }
+
+      .popup-link::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.2),
+          transparent
+        );
+        transition: 0.5s;
+      }
+
+      .popup-link:hover::before {
+        left: 100%;
+      }
+
+      @media (max-width: 768px) {
+        .logo {
+          padding: 5px;
+          margin: 5px;
+        }
+        .header-container {
+          flex-direction: column;
+          gap: 15px;
+          padding: 10px;
+        }
+
+        nav ul {
+          flex-wrap: wrap;
+          justify-content: center;
+          gap: 15px;
+        }
+        nav a {
+          flex: 0 0 auto;
+          margin: 8px;
+          padding: 8px 12px;
+          font-size: 10px;
+        }
+        .container {
+          padding: 30px 15px 40px1;
+        }
+
+        .hero {
+          padding: 15px 0;
+          margin-bottom: 20px;
+        }
+
+        .projects-grid {
+          grid-template-columns: 1fr;
+          gap: 30px;
+        }
+
+        .popup-content {
+          flex-direction: column;
+        }
+
+        .gif-section {
+          min-height: 200px;
+        }
+        .terminal-text {
+          font-size: 12px;
+          color: var(--pixel-yellow);
+          margin: 10px auto 0;
+          min-height: 20px;
+          border-top: 1px solid rgba(0, 255, 255, 0.2);
+          padding-top: 8px;
+          display: inline-block;
+          position: relative;
+          max-width: 800px;
+          line-height: 1.6;
+          text-align: center;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .hero h1 {
+          font-size: 22px;
+        }
+
+        .terminal-text {
+          font-size: 12px;
+        }
+
+        .project-title {
+          font-size: 14px;
+        }
+
+        .project-desc {
+          font-size: 10px;
+        }
+
+        .popup {
+          padding: 20px;
+        }
+
+        .popup-title {
+          font-size: 14px;
+        }
+
+        .popup-desc {
+          font-size: 10px;
+        }
+
+        .popup-links {
+          flex-direction: column;
+          gap: 10px;
+        }
+
+        .footer-links {
+          gap: 10px;
+        }
+
+        .footer-links a {
+          padding: 8px 12px;
+        }
+      }
+
+      @keyframes scanlines {
+        0% {
+          transform: translateY(-100%);
+        }
+        100% {
+          transform: translateY(100%);
+        }
+      }
+
+      @keyframes shine {
+        0% {
+          transform: rotate(30deg) translate(-10%, -10%);
+        }
+        100% {
+          transform: rotate(30deg) translate(10%, 10%);
+        }
+      }
+
+      @keyframes rainbow {
+        0% {
+          background-position: 0% 50%;
+        }
+        100% {
+          background-position: 100% 50%;
+        }
+      }
+
+      @keyframes typing {
+        from {
+          width: 0;
+        }
+        to {
+          width: 100%;
+        }
+      }
+
+      @keyframes glitch-effect {
+        0% {
+          transform: translate(0);
+        }
+        20% {
+          transform: translate(-3px, 3px);
+        }
+        40% {
+          transform: translate(-3px, -3px);
+        }
+        60% {
+          transform: translate(3px, 3px);
+        }
+        80% {
+          transform: translate(3px, -3px);
+        }
+        100% {
+          transform: translate(0);
+        }
+      }
+
+      @keyframes pulse {
+        0% {
+          transform: scale(0.95);
+          box-shadow: 0 0 0 0 rgba(0, 245, 255, 0.7);
+        }
+        70% {
+          transform: scale(1.05);
+          box-shadow: 0 0 0 10px rgba(0, 245, 255, 0);
+        }
+        100% {
+          transform: scale(0.95);
+          box-shadow: 0 0 0 0 rgba(0, 245, 255, 0);
+        }
+      }
+
+      .loading-animation {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: var(--midnight-navy);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+        animation: fadeOut 1s ease-in-out 3s forwards;
+      }
+
+      .loading-bar {
+        width: 300px;
+        height: 20px;
+        background: rgba(10, 14, 39, 0.8);
+        border: 2px solid var(--cyber-purple);
+        border-radius: 10px;
+        overflow: hidden;
+        margin: 30px 0;
+        position: relative;
+        box-shadow: 0 0 20px rgba(157, 0, 255, 0.3);
+      }
+
+      .loading-progress {
+        height: 100%;
+        width: 0;
+        background: linear-gradient(
+          90deg,
+          var(--cyber-pink),
+          var(--cyber-red-light)
+        );
+        transition: width 0.3s ease;
+      }
+
+      .loading-text {
+        color: var(--cyber-red);
+        font-size: 12px;
+        margin-top: 10px;
+        text-align: center;
+      }
+
+      @keyframes fadeOut {
+        to {
+          opacity: 0;
+          visibility: hidden;
+        }
+      }
+
+      .binary-rain {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        opacity: 0.1;
+        font-size: 14px;
+        line-height: 1.2;
+        color: var(--neon-cyan);
+        z-index: -1;
+        overflow: hidden;
+      }
+
+      .binary-digit {
+        position: absolute;
+        top: -20px;
+        animation: fall linear infinite;
+        opacity: 0;
+      }
+
+      @keyframes fall {
+        0% {
+          transform: translateY(-20px);
+          opacity: 0;
+        }
+        10% {
+          opacity: 1;
+        }
+        90% {
+          opacity: 1;
+        }
+        100% {
+          transform: translateY(100vh);
+          opacity: 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="cyber-grid"></div>
+    <div class="scanlines"></div>
+
+    <div class="binary-rain" id="binaryRain"></div>
+    <canvas id="particles" style="position:fixed; top:0; left:0; z-index:-1; pointer-events:none;"></canvas>
+
+    <div class="loading-animation" id="loadingAnimation">
+      <div class="glitch" data-text="RETRO_OS">RETRO_OS</div>
+      <div class="loading-bar">
+        <div class="loading-progress" id="loadingProgress"></div>
+      </div>
+      <div class="loading-text" id="loadingText"></div>
+    </div>
+
+    <header>
+      <div class="header-container">
+        <a href="#" class="logo">
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <rect
+              x="4"
+              y="4"
+              width="16"
+              height="16"
+              rx="2"
+              stroke="#e35252"
+              stroke-width="2"
+            />
+            <rect x="8" y="8" width="8" height="8" fill="#f2bd4b" />
+          </svg>
+          <span>RETRO_OS</span>
+        </a>
+        <nav>
+          <ul>
+            <li><a href="/home/index.html">HOME</a></li>
+            <li><a href="/about_me/about_me.html">ABOUT Me</a></li>
+            <li><a href="#" class="active">PROJECTS</a></li>
+            <li><a href="/lets_talk/let_talk.html">Let's talk</a></li>
+            <li><a href="/contact/contact.html">CONTACT</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <div class="container">
+      <section class="hero">
+        <h1>PROJECTS</h1>
+        <div class="terminal-text" id="terminalText"></div>
+      </section>
+
+      <div class="projects-grid" id="projectsGrid"></div>
+    </div>
+
+    <div class="popup" id="projectPopup">
+      <div class="popup-header">
+        <div class="popup-title" id="popupTitle">Project Title</div>
+        <button class="close-popup" id="closePopup">X</button>
+      </div>
+      <div class="popup-content">
+        <div class="gif-section">
+          <img
+            id="popupGif"
+            src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExd2R5b3N4d3F4eWx5bW1tZ3V2b2V0Z2J2dGJ0eXJ2eWx5a3l4dXh5ZyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3o7abKhK8ErT3kZqG4/giphy.gif"
+            alt="Project GIF"
+          />
+        </div>
+        <div class="project-info">
+          <div class="popup-tech" id="popupTech">Technologies Used</div>
+          <div class="popup-desc" id="popupDesc">Project Description</div>
+          <div class="popup-links">
+            <a href="#" class="popup-link" id="codeLink">VIEW CODE</a>
+            <a href="#" class="popup-link" id="demoLink">LIVE DEMO</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <div class="footer-links">
+        <a href="#">GITHUB</a>
+        <a href="#">LINKEDIN</a>
+        <a href="#">INSTAGRAM</a>
+      </div>
+      <div class="footer-copyright">MORE PROJECTS SOON..!</div>
+      <div class="footer-version">SYSTEM VERSION 1.0.0</div>
+    </footer>
+
+    <script>
+      function initLoading() {
+        const loadingProgress = document.getElementById("loadingProgress");
+        const loadingText = document.getElementById("loadingText");
+
+        const stages = [
+          { progress: 10, text: "> Booting kernel modules..." },
+          { progress: 25, text: "> Mounting filesystems..." },
+          { progress: 40, text: "> Starting network services..." },
+          { progress: 55, text: "> Loading security protocols..." },
+          { progress: 70, text: "> Initializing UI components..." },
+          { progress: 85, text: "> Finalizing system..." },
+          { progress: 100, text: "> System ready. Welcome back, user." },
+        ];
+
+        stages.forEach((stage, index) => {
+          setTimeout(() => {
+            loadingProgress.style.width = stage.progress + "%";
+            loadingText.textContent = stage.text;
+
+            if (index === stages.length - 1) {
+              setTimeout(() => {
+                document.getElementById("loadingAnimation").style.animation =
+                  "fadeOut 0.5s forwards";
+                initContent();
+              }, 800);
+            }
+          }, index * 500);
+        });
+
+        loadProjects();
+        createBinaryRain();
+      }
+
+      function initContent() {
+        typeText(
+          "> System operational. All projects loaded and ready for review.",
+          "terminalText"
+        );
+        createGlitchEffects();
+        createHoverEffects();
+      }
+
+      function typeText(text, elementId, speed = 30) {
+        const element = document.getElementById(elementId);
+        element.innerHTML = "";
+        let i = 0;
+        const typing = setInterval(() => {
+          if (i < text.length) {
+            // Add blinking cursor effect
+            const cursor = i === text.length - 1 ? '<span class="blinking-cursor">|</span>' : '';
+            element.innerHTML = text.substring(0, i + 1) + cursor;
+            i++;
+            // Play typing sound
+            playSound('typing');
+          } else {
+            clearInterval(typing);
+          }
+        }, speed);
+      }
+
+      function playSound(type) {
+        if (typeof Audio !== 'undefined') {
+          const sounds = {
+            typing: 'https://assets.mixkit.co/sfx/preview/mixkit-keyboard-typing-1386.mp3',
+            click: 'https://assets.mixkit.co/sfx/preview/mixkit-modern-click-box-check-1120.mp3',
+            hover: 'https://assets.mixkit.co/sfx/preview/mixkit-quick-jump-arcade-game-239.mp3'
+          };
+          const audio = new Audio(sounds[type]);
+          audio.volume = 0.2;
+          audio.play().catch(e => console.log('Audio play failed:', e));
+        }
+      }
+
+      function createGlitchEffects() {
+        setInterval(() => {
+          const elements = document.querySelectorAll(
+            ".project-card, .hero h1, .terminal-text"
+          );
+          const randomElement =
+            elements[Math.floor(Math.random() * elements.length)];
+
+          randomElement.classList.add("glitch");
+          setTimeout(() => {
+            randomElement.classList.remove("glitch");
+          }, 500);
+        }, 5000);
+      }
+
+      function createHoverEffects() {
+        document.querySelectorAll(".project-card").forEach((card) => {
+          card.addEventListener("mouseenter", () => {
+            const colors = [
+              "var(--cyber-pink)",
+              "var(--neon-blue)",
+              "var(--cyber-purple)",
+            ];
+            const randomColor =
+              colors[Math.floor(Math.random() * colors.length)];
+            card.style.boxShadow = `0 0 40px ${randomColor}`;
+            card.style.borderColor = randomColor;
+          });
+
+          card.addEventListener("mouseleave", () => {
+            card.style.boxShadow = "0 5px 15px rgba(157, 0, 255, 0.2)";
+            card.style.borderColor = "var(--cyber-purple)";
+          });
+        });
+      }
+
+      function createBinaryRain() {
+        const binaryRain = document.getElementById("binaryRain");
+        const chars = "01";
+
+        for (let i = 0; i < 150; i++) {
+          const digit = document.createElement("div");
+          digit.className = "binary-digit";
+          digit.textContent = chars[Math.floor(Math.random() * chars.length)];
+          digit.style.left = Math.random() * 100 + "vw";
+          digit.style.animationDuration = 3 + Math.random() * 5 + "s";
+          digit.style.animationDelay = Math.random() * 5 + "s";
+          digit.style.color = `hsl(${Math.random() * 60 + 160}, 100%, ${
+            Math.random() * 30 + 70
+          }%)`;
+          binaryRain.appendChild(digit);
+        }
+      }
+
+      const projects = [
+        {
+          title: "COLLEGE_WEB_PAGE_CLONE",
+          description:
+            "This College Web Page Clone is a front-end replica of a typical university website, featuring sections like Home, About, Courses, and Contact. Built using HTML, CSS, and optional JavaScript, it showcases responsive design and clean layout, ideal for web development practice or portfolio projects.",
+          tech: "HTML • CSS • JS vanilla",
+          gif: "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExd2R5b3N4d3F4eWx5bW1tZ3V2b2V0Z2J2dGJ0eXJ2eWx5a3l4dXh5ZyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3o7abKhK8ErT3kZqG4/giphy.gif",
+          code: "#",
+          demo: "#",
+        },
+        {
+          title: "SIMPLE_TRAVEL_GUID_PAGE",
+          description:
+            "This Simple Travel Guide Page provides basic information about travel destinations, including places to visit, tips, and highlights. Designed with HTML and CSS, it features a clean, user-friendly layout. Ideal for beginners, this project showcases fundamental web design skills in building informative and visually appealing travel pages.",
+          tech: "HTML • CSS • JS vanilla",
+          gif: "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExc2Z0d2Z0eG5pY2J5dG5hY2Z6b2JwZzR0dGJ1c2l5dGZzY3V6bW1zZyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3o7TKsQ8RUL8qVXBUQ/giphy.gif",
+          code: "#",
+          demo: "#",
+        },
+        {
+          title: "BUDGET_TRACKER",
+          description:
+            "This Budget Tracker app helps users manage daily and monthly expenses while learning basic investment concepts. Built with simple HTML, CSS, and JavaScript, it features input forms, summaries, and tips on saving and investing. Ideal for beginners aiming to build financial discipline and web development skills.",
+          tech: "HTML • CSS • JS vanilla",
+          gif: "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExa2N6b2h6c2R1bGJ1cG9tY2J4Y2FmZ2J1bGZ0b2FzZ2V1dWZxZ3V1ZyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3o7TKwxYje6QOZQhMQ/giphy.gif",
+          code: "#",
+          demo: "#",
+        },
+        {
+          title: "DATA_VISUALIZER",
+          description:
+            "The Data Visualizer is a web project that displays data in graphical formats like bar charts, pie charts, and line graphs using libraries like Chart.js or D3.js. It helps users understand patterns and insights visually, making it ideal for learning data presentation, JavaScript basics, and interactive UI design.",
+          tech: "D3.js • React • WebGL",
+          gif: "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExa2N6b2h6c2R1bGJ1cG9tY2J4Y2FmZ2J1bGZ0b2FzZ2V1dWZxZ3V1ZyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3o7TKwxYje6QOZQhMQ/giphy.gif",
+          code: "#",
+          demo: "#",
+        },
+        {
+          title: "WARM_UP_PORTFOLIO",
+          description:
+            "This Warm-Up Portfolio is a beginner-friendly web project designed to strengthen basic HTML, CSS, and JavaScript skills. It includes simple sections like About, Projects, and Contact, helping learners practice layout, styling, and responsiveness while building a personal showcase for future development work.",
+          tech: "HTML • CSS • JS vanilla",
+          gif: "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExa2N6b2h6c2R1bGJ1cG9tY2J4Y2FmZ2J1bGZ0b2FzZ2V1dWZxZ3V1ZyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3o7TKwxYje6QOZQhMQ/giphy.gif",
+          code: "#",
+          demo: "#",
+        },
+        {
+          title: "RETRO_BROWSER",
+          description:
+            "Web browser with a vintage terminal aesthetic and built-in developer tools for retro web development.",
+          tech: "Electron • Chromium • CSS",
+          gif: "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExa2N6b2h6c2R1bGJ1cG9tY2J4Y2FmZ2J1bGZ0b2FzZ2V1dWZxZ3V1ZyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3o7TKwxYje6QOZQhMQ/giphy.gif",
+          code: "#",
+          demo: "#",
+        },
+      ];
+
+      function loadProjects() {
+        const grid = document.getElementById("projectsGrid");
+        const fragment = document.createDocumentFragment();
+
+        projects.forEach((project, index) => {
+          const card = document.createElement("div");
+          card.className = "project-card holographic";
+          card.innerHTML = `
+                    <div class="project-screen">
+                        <div class="project-title">${project.title}</div>
+                        <div class="project-desc">${project.description}</div>
+                        <div class="project-tech">${project.tech}</div>
+                    </div>
+                    <div class="project-controls">
+                        <button class="retro-btn" onclick="viewProject(${index})">VIEW MORE</button>
+                        <button class="retro-btn" onclick="launchProject(${index})">LAUNCH</button>
+                    </div>
+                `;
+
+          fragment.appendChild(card);
+        });
+
+        grid.appendChild(fragment);
+      }
+
+      function viewProject(index) {
+        const project = projects[index];
+        if (!project) return;
+
+        const popup = document.getElementById("projectPopup");
+        const popupTitle = document.getElementById("popupTitle");
+        const popupTech = document.getElementById("popupTech");
+        const popupDesc = document.getElementById("popupDesc");
+        const popupGif = document.getElementById("popupGif");
+        const codeLink = document.getElementById("codeLink");
+        const demoLink = document.getElementById("demoLink");
+
+        popupTitle.textContent = project.title;
+        popupTech.textContent = project.tech;
+        popupDesc.textContent = project.description;
+        popupGif.src = project.gif;
+        codeLink.href = project.code;
+        demoLink.href = project.demo;
+
+        popup.classList.add("active");
+
+        setTimeout(() => {
+          popupTitle.classList.add("glitch");
+          setTimeout(() => {
+            popupTitle.classList.remove("glitch");
+          }, 500);
+        }, 300);
+      }
+
+      function launchProject(index) {
+        const project = projects[index];
+        const btn = event.target;
+
+        btn.textContent = ">>> INITIALIZING <<<";
+        btn.style.background =
+          "linear-gradient(90deg, var(--cyber-pink), var(--neon-blue))";
+        btn.style.color = "white";
+        btn.style.boxShadow = "0 0 20px var(--cyber-pink)";
+
+        setTimeout(() => {
+          btn.textContent = ">>> EXECUTING <<<";
+          setTimeout(() => {
+            btn.textContent = "LAUNCHED!";
+            setTimeout(() => {
+              btn.textContent = "LAUNCH";
+              btn.style.background = "var(--pixel-yellow)";
+              btn.style.color = "var(--midnight-navy)";
+              btn.style.boxShadow = "0 4px 6px rgba(242, 189, 75, 0.3)";
+
+              typeText(
+                `> ${project.title} launched successfully. Access granted.`,
+                "terminalText"
+              );
+            }, 800);
+          }, 800);
+        }, 800);
+      }
+
+      document.getElementById("closePopup").addEventListener("click", () => {
+        document.getElementById("projectPopup").classList.remove("active");
+      });
+
+      window.addEventListener("DOMContentLoaded", () => {
+        initLoading();
+      });
+    </script>
+    <script>
+      // Particle effect
+      const canvas = document.getElementById('particles');
+      const ctx = canvas.getContext('2d');
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+
+      const particles = [];
+      const colors = ['#ff2a6d', '#00ffff', '#9d00ff', '#f2bd4b'];
+
+      class Particle {
+        constructor() {
+          this.x = Math.random() * canvas.width;
+          this.y = Math.random() * canvas.height;
+          this.size = Math.random() * 3 + 1;
+          this.speedX = Math.random() * 3 - 1.5;
+          this.speedY = Math.random() * 3 - 1.5;
+          this.color = colors[Math.floor(Math.random() * colors.length)];
+          this.opacity = Math.random() * 0.6 + 0.1;
+        }
+
+        update() {
+          this.x += this.speedX;
+          this.y += this.speedY;
+          if (this.size > 0.2) this.size -= 0.05;
+        }
+
+        draw() {
+          ctx.globalAlpha = this.opacity;
+          ctx.fillStyle = this.color;
+          ctx.beginPath();
+          ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+          ctx.fill();
+        }
+      }
+
+      function initParticles() {
+        for (let i = 0; i < 100; i++) {
+          particles.push(new Particle());
+        }
+      }
+
+      function animateParticles() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        for (let i = 0; i < particles.length; i++) {
+          particles[i].update();
+          particles[i].draw();
+          if (particles[i].size <= 0.2) {
+            particles.splice(i, 1);
+            i--;
+          }
+        }
+        if (particles.length < 100) {
+          particles.push(new Particle());
+        }
+        requestAnimationFrame(animateParticles);
+      }
+
+      window.addEventListener('resize', () => {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      });
+
+      initParticles();
+      animateParticles();
+    </script>
+  </body>
+</html>
